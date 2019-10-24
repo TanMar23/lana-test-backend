@@ -1,10 +1,11 @@
 const router = require('express').Router()
-const { createTodoList, getTodoList, deleteTodoList } = require('../controllers/todo')
+const { createTodoList, getTodoList, deleteTodoList, getOneTodo } = require('../controllers/todo')
 
 //TODO CRUD
 router.post('/todo', createTodoList)
 router.get('/todo', getTodoList)
-router.delete('/todo', deleteTodoList)
+router.get('/todo/:id', getOneTodo)
+router.delete('/todo/:id', deleteTodoList)
 
 
 module.exports = router

@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const taskSchema = new Schema(
   {
-    name: String,
+    name: [String],
   },
   {
     timestamps: true,

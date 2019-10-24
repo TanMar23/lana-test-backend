@@ -7,6 +7,7 @@ const favicon      = require('serve-favicon');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const cors         = require('cors')
 
 
 mongoose
@@ -63,6 +64,8 @@ const index = require('./routes/index');
 app.use('/api', index);
 const tasks = require('./routes/tasks-routes');
 app.use('/api', tasks);
+const todo = require('./routes/todo-routes')
+app.use('/api', todo)
 
 
 module.exports = app;

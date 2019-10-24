@@ -10,21 +10,31 @@ exports.createTodoList = async (req, res) => {
   }
 }
 
-//Read
+//Read All
 exports.getTodoList = async (req, res) => {
   try{
     const todoList = await Todo.find()
-    res.status(200).json( { message: 'TODO list found', todoList})
+    res.status(200).json( { message: 'TODO lists found', todoList})
   } catch(error){
-    res.status(404).json({ message: 'The TODO list does not exist', error})
+    res.status(404).json({ message: 'The TODO lists dont exist', error})
+  }
+}
+
+//Read One
+exports.getOneTodo = async (req, res) => {
+  try{
+    const oneTodoList = await Todo.findById(req.params.id)
+    res.status(200).json( {message: 'Single TODO list found', oneTodoList})
+  } catch (error) {
+    res.status(404).json({ message: 'The TODO list does not exist', error}
+    )
   }
 }
 
 //Delete 
 exports.deleteTodoList = async (req, res) => {
-  try{
-    const { todoList } = req.params
-    const todoDeleted = await Todo.findByIdAndDelete(todoList)
+  try{   
+    const todoDeleted = await Todo.findByIdAndDelete(req.params.id)
     res.status(200).json({ message: 'TODO list deleted', todoDeleted})
   } catch(error){
     res.status(500).json({ message: 'Something went wrong', error})
