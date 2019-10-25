@@ -3,11 +3,7 @@ const { Schema, model } = require('mongoose');
 const todoSchema = new Schema(
   {
     name: String,
-    description: String,
-    task: {
-      type: Schema.Types.ObjectId,
-      ref: 'Task'
-    }
+    description: String
   },
   {
     timestamps: true,
