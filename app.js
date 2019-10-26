@@ -11,7 +11,7 @@ const cors         = require('cors')
 
 
 mongoose
-  .connect('mongodb://localhost/backend', {useNewUrlParser: true, useUnifiedTopology: true})
+  .connect(process.env.DB, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -25,11 +25,10 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 const app = express();
 
 //CORS Setup
-//NO OLVIDES CAMBIAR VARIABLES DE ENTORNO (FRONTENDPOINT DEVENDPOINT)
 app.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:3001'
+    origin: [process.env.FRONTENDPOINT, process.env.DEVENDPOINT]
   })
 );
 
